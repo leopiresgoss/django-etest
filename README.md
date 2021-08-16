@@ -1,5 +1,5 @@
 # Welcome to ETEST
-### ETEST is a Djando web application for the CS50's final project 
+### ETEST is a Django web application for the CS50's final project 
 
 ## Goal
 The main objective is a web application that you can create tests and share them with anyone
