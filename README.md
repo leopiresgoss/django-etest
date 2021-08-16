@@ -19,7 +19,7 @@ The main objective is a web application that you can create tests and share them
 12. Run server: **$ python manage.py runserver**
 13. With the link in your terminal, access **ETEST** in your browser :)
 
-## Documentations:
+## Documentations
 Check the documentations for more informations:
 
 **Virtualenv** https://pypi.org/project/virtualenv/
