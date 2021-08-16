@@ -1,0 +1,19 @@
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Confirmation</h5>
+      </div>
+      <div class="modal-body">
+        Do you really want to make your test available? 
+        You will not be able to change anything from your test. 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <form class="end-test-form" action="end-test" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Yes</button>        
+        </form>
+      </div>
+    </div>
+</div>

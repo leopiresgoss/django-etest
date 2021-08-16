@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block scripts %}
+    <script src="{% static 'tests/TestHrefAndCopyButton.js' %}" defer></script>
+{% endblock scripts %}
+
+{% block title %}
+{{test.name}} Progress
+{% endblock title %}
+
+{% block content %}
+<div class="test-details mt-5">
+    <h1>{{test.name}}</h1>
+    <h6>Deadline: {{test.deadline}}</h6>
+    <h6>Number of participants: {{participants|length}}</h6>
+    <br>
+    <h6>Test url:</h6>
+    <div class="input-group mb-3">
+      <input type="hidden" value="{{test.test_code}}" id="test-code-input">
+      <input type="url" class="form-control" id="test-href"  aria-describedby="button-addon2" value="">
+      <button type="button" 
+        class="btn btn-secondary" 
+        data-bs-container="body" 
+        data-bs-toggle="popover" 
+        data-bs-placement="top" 
+        data-bs-content="Copied! :)"
+        onclick="copyButton()">
+        Copy Link
+      </button>
+    </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Score</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for participant in participants %}
+        <tr>
+          <th scope="row">{{participant.name}}</th>
+          <td>{{participant.email}}</td>
+          <td>{{participant.score}}</td>
+          <td style="width: 10%;">
+            <a class="btn btn-secondary" 
+              data-bs-toggle="collapse" 
+              href="#multiCollapseMoreInfo{{participant.id}}" 
+              role="button" aria-expanded="false" aria-controls="multiCollapseMoreInfo{{participant.id}}">More Info</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <div class="collapse multi-collapse" id="multiCollapseMoreInfo{{participant.id}}">
+              <table class="table mb-0">
+                <thead>
+                  <tr>
+                    <td>Question</td>
+                    <td>Answer</td>
+                    <td>Correct Answer</td>
+                    <td></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for question in participant.questions %}
+                  <tr>
+                      <td>{{question.number}}</td>
+                      <td>{{question.participant_answer}}</td>
+                      <td>{{question.correct_answer}}</td>
+                      {% if question.participant_answer == question.correct_answer %}
+                        <td><i class="bi bi-check-lg"></i></td>
+                      {% else %}
+                        <td><i class="bi bi-x-lg"></i></td>                    
+                      {% endif %}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </td>        
+        </tr>
+
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

@@ -1,0 +1,93 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+/* Buttons */
+#submit-button {
+    background-color: #74d44c;
+}
+
+.btn-index {
+    grid-gap: 8px;
+    grid-template-columns: 1fr 1fr;
+    margin: auto 4px;
+}
+
+.btn-index-form {
+    width: 100%;
+}
+
+/* Navbar */
+.navbar-brand {
+    margin-right: -36px;
+}
+
+.navbar-brand img {
+    width: 64%;
+}
+
+/* Login */
+.login-div, .finished-div{
+    top: 40%!important;    
+}
+
+.login .control-label {
+    color: white;    
+}
+
+.login form{
+    width: fit-content;
+}
+
+/* Questions - Create */
+.question {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create-test-form,
+.end-test-button{
+    width: 64%;
+}
+
+
+.create-test-form textarea {
+    width: 100%;
+}
+
+.question-option-div {
+    margin: 8px 0;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.option {
+    margin-bottom: 4px;
+
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.option .material-icons{
+    cursor: pointer;
+}
+
+/* Participant - Home */
+.participants {
+    height: 70%;
+}
+.participants.question {
+    width: 64%;
+}
+.participants.home input {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.participants.question .form-check label{
+    margin-bottom: 16px;
+}

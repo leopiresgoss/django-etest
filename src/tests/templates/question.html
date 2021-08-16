@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block scripts %}
+    <script src="{% static 'tests/OptionGenerator.js' %}" defer></script>
+{% endblock scripts %}
+
+{% block title %}
+Create Question #{{num|default:"1"}}
+{% endblock title %}
+
+{% block content %}
+<div class="question create mt-3">
+    <h1>Question #{{num|default:"1"}}</h1>
+    <form class="create-test-form" id="form-create" action="" method="POST">
+        {% csrf_token %}
+        <label for="question">Create your question:</label>
+        <br>
+        <textarea name="question" rows="12" cols="48" required>{{question_name|default:""}}</textarea>
+        <br>
+        <label for="question-options">Insert the options and select the correct one</label>
+        <div class="question-option-div w-100">
+            {% if question_name %}
+                {% for option in question_options %}
+                <div class="option">
+                    <input type="hidden" name="correct-answer" class="correct-answer" value="{{option.answer}}">
+                    <p class="letter">{{option.letter}}</p>
+                    <input type="text" class="option-input border border-danger w-75" name="question-option" value="{{option.option}}">
+                    <span class="material-icons cancel" onclick="deleteoption(this)">clear</span>
+                    <span class="material-icons text-danger check-icon" onclick="correct(this)">done_outline</span>
+                </div>                
+                {% endfor %}
+            {% else %}
+                <div class="option">
+                    <input type="hidden" name="correct-answer" class="correct-answer" value="F">
+                    <p class="letter">a)</p>
+                    <input type="text" class="option-input border border-danger w-75" name="question-option">
+                    <span class="material-icons cancel" onclick="deleteoption(this)">clear</span>
+                    <span class="material-icons text-danger check-icon" onclick="correct(this)">done_outline</span>
+                </div>
+
+                <div class="option">
+                    <input type="hidden" name="correct-answer" class="correct-answer" value="F">
+                    <p class="letter">b)</p>
+                    <input type="text" class="option-input border border-danger w-75" name="question-option">
+                    <span class="material-icons cancel" onclick="deleteoption(this)">clear</span>
+                    <span class="material-icons text-danger check-icon" onclick="correct(this)">done_outline</span>
+                </div>
+            {% endif %}
+        </div>
+        <button type="button" class="new-option btn btn-primary btn-sm d-block mb-4">New Option</button>
+
+        <button type="submit" id="submit-button" class="btn btn-info mt-2">Save Question</button>
+    </form>
+
+    {% if last_question > 0 %}
+        <div class="end-test-button mt-3 mb-3">
+            <button type="submit" 
+                class="btn btn-danger mt-2" 
+                data-bs-toggle="modal" 
+                data-bs-target="#staticBackdrop">End Test
+            </button>
+        </div>
+    {% endif %}
+    
+    <!-- To check if the user really want to finish the test -->
+    {% include 'finish-modal.html' %}
+</div>
+    
+</div>
+{% endblock content %}

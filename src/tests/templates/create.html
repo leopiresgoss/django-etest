@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block scripts %}
+    <script src="{% static 'tests/GetClientTZ.js' %}" defer></script>
+{% endblock scripts %}
+
+
+{% block title %}
+Create New Test
+{% endblock title %}
+
+{% block content %}
+<h1 class="d-flex justify-content-center mt-5 mb-5">Create your test</h1>
+<form class="create test d-grid justify-content-center gap-3" action="" method="POST">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button type="submit" id="submit-button" class="btn btn-info  mt-3">Create</button>
+</form>
+{% endblock content %}

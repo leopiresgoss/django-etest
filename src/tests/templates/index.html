@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block scripts %}
+    <script src="{% static 'tests/DeleteAlert.js' %}" defer></script>
+{% endblock scripts %}
+
+{% block title %}
+ETEST
+{% endblock title %}
+
+{% block content %}
+<div class="row gap-3 row-cols-auto mt-5">
+    {% for obj in object_list %}
+        <div class="col border">
+            <h4>{{obj}}</h4>
+            <h6>{{obj.deadline}}</h6>
+            <div class="ms-2">
+                <div class="mt-2 mb-2 btn-index d-grid justify-content-between">
+                    {% if obj.sent %}
+                        <form action="/tests/{{obj.test_code}}/progress" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-index-form btn btn-success btn-sm">Progress</button>                    
+                        </form>
+                    {% else %}
+                        <a class="btn btn-info btn-sm" href='/tests/{{obj.test_code}}/1'>Edit</a>
+                    {% endif %}
+                    
+                    <form action="/tests/{{obj.test_code}}/delete" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-index-form btn btn-danger btn-sm delete-button">Delete</button>                    
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    {% endfor %}
+
+    {% if not object_list %}
+        <h3>
+         <small class="text-muted">Empty</small>
+        </h3>
+    {% endif %}
+</div>
+{% endblock content %}

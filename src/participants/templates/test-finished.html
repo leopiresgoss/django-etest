@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Test Finished :)
+{% endblock title %}
+
+{% block content %}
+<div class="finished-div position-absolute top-50 start-50 translate-middle">
+    <div class="image-logo d-flex justify-content-center">
+        <img src="{% static 'images/c1436794495343efa8ddef7fe2f4818b.png' %}" alt="E-test logo">
+    </div>
+    <div class="finish-message">
+        <h3>Congratulations!</h3>
+        <h6 class="d-flex justify-content-center">You finished your test :)</h6>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="position-relative">
+    <head>
+        <!-- meta tags-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static '/favicon_io/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static '/favicon_io/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static '/favicon_io/favicon-16x16.png' %}">
+        <link rel="manifest" href="/site.webmanifest">
+
+        <!-- Material Icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!-- bootstrap css-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        
+        <!-- bootstrap icons-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        
+        <!-- style.css-->
+        <link rel="stylesheet" href="{% static 'style/style.css' %}">
+        
+        <!-- scripts block -->
+        {% block scripts %}
+        {% endblock scripts %}
+        
+        <title>E-test: {% block title %}{% endblock title%}</title>
+    </head>
+    <body class="{% if is_login %}bg-dark{% else %}bg-light{% endif %} position-relative">        
+        <!-- if necessary create nav.bar-->
+        {% if user_is_logged %}
+            {% include 'navbar.html' %}
+        {% endif %}
+
+        {% if error %}
+            {% include 'messages/error.html' %}
+        {% endif %}
+        <div class="container">
+            {% block content %}
+            {% endblock content %}
+        </div>
+
+        <!-- bootstrap js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+        <script src="{% static 'scripts/EnablePopovers.js' %}"></script>
+    </body>
+</html>
