@@ -15,7 +15,7 @@ The main objective is a web application that you can create tests and share them
 8.	**$ cd src**
 9. 	**$ python manage.py makemigrations**
 10.	**$ python manage.py migrate**
-11.	Create superuser in order to access admin: **$ python manage.py createsuperuser**
+11.	Create superuser in order to access the admin: **$ python manage.py createsuperuser**
 12. Run server: **$ python manage.py runserver**
 13. With the link in your terminal, access **ETEST** in your browser :)
 
@@ -29,6 +29,9 @@ Check the documentations for more informations:
 **Django** https://docs.djangoproject.com/en/3.2/
 
 ## Acknowledgments
+I would like to offer my special thanks to David J. Malan, the staff and all the CS50 community, it was a honor to take part of this course.
+I would also like to thank FreeCodeCamp and Pyplane for providing excelent contents. 
 
+Please, if you have any feedback, don't hesitate to contact me. Thank you.
 
 
