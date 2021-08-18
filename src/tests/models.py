@@ -19,9 +19,6 @@ class Test(models.Model):
 
     def __str__(self):
         return str(self.name)
-
-    #def get_absolute_url(self):
-        #return reverse("tests:test", kwargs={"pk": self.pk})
     
 # Questions Model
 class Question(models.Model):
