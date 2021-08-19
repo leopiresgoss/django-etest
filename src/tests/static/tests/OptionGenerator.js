@@ -1,6 +1,3 @@
-// TODO CONST options... (create a function to reduce the code)
-// TODO check javascript objects (foodfy) and change it 
-
 // change option to green or red
 const options = document.getElementsByClassName('option')
 const length = options.length
