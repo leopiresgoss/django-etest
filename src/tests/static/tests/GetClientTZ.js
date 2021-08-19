@@ -5,7 +5,7 @@ const clientTzInput = document.getElementById('id_client_timezone')
 const date = new Date()
 const TzOffSet = date.getTimezoneOffset()
 
-// Get between it and UTC in minutes 
+// Get the difference between user's TZ and UTC in minutes 
 function load() {
     const submitButton = document.getElementById('submit-button') 
     submitButton.addEventListener("click", function() {
